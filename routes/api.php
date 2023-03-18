@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\V1\AssetController;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\CodeCheckController;
 use App\Http\Controllers\Api\V1\ForgetPasswordController;
+use App\Http\Controllers\Api\V1\ItemController;
 use App\Http\Controllers\Api\V1\ResetPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,4 +39,6 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
 
     // Asset Controller
     Route::apiResource('assets', AssetController::class);
+    Route::apiResource('items', ItemController::class);
+    Route::get('assets/{asset_id}/items', [ItemController::class, 'getItem']);
 });
