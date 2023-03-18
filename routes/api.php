@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\CodeCheckController;
+use App\Http\Controllers\Api\V1\ForgetPasswordController;
+use App\Http\Controllers\Api\V1\ResetPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +25,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('v1')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
+
+    // For Password Resetting
+    Route::post('password/email',  ForgetPasswordController::class);
+    Route::post('password/code/check', CodeCheckController::class);
+    Route::post('password/reset', ResetPasswordController::class);
 });
 
 Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
