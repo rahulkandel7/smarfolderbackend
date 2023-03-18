@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AssetController;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\CodeCheckController;
 use App\Http\Controllers\Api\V1\ForgetPasswordController;
@@ -34,4 +35,7 @@ Route::prefix('v1')->group(function () {
 
 Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    // Asset Controller
+    Route::apiResource('assets', AssetController::class);
 });
