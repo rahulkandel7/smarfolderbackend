@@ -47,5 +47,5 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
 
     // Asset Item Notes Controller
     Route::apiResource('notes', NoteController::class);
-    Route::get('items/{item_id}/notes', [NoteController::class, 'getNote']);
+    Route::get('items/{asset_id}/notes', [NoteController::class, 'getNotesByAsset']);
 });
